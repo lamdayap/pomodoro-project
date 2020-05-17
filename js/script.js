@@ -3,8 +3,8 @@ const startButton = document.querySelector(".btn-outline-primary")
 const resetButton = document.querySelector(".btn-outline-secondary")
 let timerStarted = undefined
 let intervalID = undefined
-let minutes = 25
-let seconds = 0
+let minutes = 24
+let seconds = 59
 let isPaused = false
 let isBreak = false
 
@@ -55,7 +55,7 @@ function pauseCountdownTimer() {
 
 startButton.addEventListener('click', () => {
     if (!isPaused && !timerStarted) {
-        countdownTimer(25, 0) 
+        countdownTimer(24, 59) 
     } else if (!isPaused && timerStarted) {
         pauseCountdownTimer()
     } else {
@@ -68,8 +68,8 @@ resetButton.addEventListener('click', () => {
     clearInterval(intervalID)
     startButton.innerHTML = "Start"
     timerStarted = undefined
-    minutes = 25
-    seconds = 0
+    minutes = 24
+    seconds = 59
     isPaused = false
     isBreak = false
     timer.textContent = `${padToTwo(minutes)}:${padToTwo(seconds)}`
@@ -77,9 +77,9 @@ resetButton.addEventListener('click', () => {
 
 $('#staticBackdrop').on('hide.bs.modal', () => {
     if (isBreak) {
-        countdownTimer(5, 0)
+        countdownTimer(4, 59)
     } else {
-        countdownTimer(25, 0)
+        countdownTimer(24, 59)
     }
 
 })
